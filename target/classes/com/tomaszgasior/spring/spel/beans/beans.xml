@@ -9,12 +9,4 @@
 	<context:component-scan base-package="com.tomaszgasior.spring.spel">
 	</context:component-scan>
 
-	<bean id="robot" class="com.tomaszgasior.spring.spel.Robot">
-		<property name="id" value="#{randomText.text.length()}"></property>
-		<property name="speech" value="#{'random text: ' + randomText.getText()}"></property>
-	</bean>
-
-	<bean id="randomText" class="com.tomaszgasior.spring.spel.RandomText">
-
-	</bean>
 </beans>
