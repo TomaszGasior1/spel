@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 
 public class App {
 
@@ -12,11 +14,25 @@ public class App {
 		ApplicationContext context = new ClassPathXmlApplicationContext("com/tomaszgasior/spring/spel/beans/beans.xml");
 		
 		OffersDAO offersDao = (OffersDAO)context.getBean("offersDao");
+		try {
+			List<Offer> offers = offersDao.getOffers();
+			
+			for(Offer offer:offers)
+				System.out.println(offer);
+			
+		} 
+		catch(CannotGetJdbcConnectionException e){
+			
+			System.out.println("Cannot get database connection.");
+			
+		} 
 		
-		List<Offer> offers = offersDao.getOffers();
+		catch (DataAccessException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println(ex.getClass());
+			
+		}
 		
-		for(Offer offer:offers)
-			System.out.println(offer);
 		
 		((ClassPathXmlApplicationContext)context).close();
 
