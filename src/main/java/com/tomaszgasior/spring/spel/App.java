@@ -15,6 +15,18 @@ public class App {
 		
 		OffersDAO offersDao = (OffersDAO)context.getBean("offersDao");
 		try {
+			
+			Offer offer1 = new Offer("Tom", "Tom@gmail.com", "looking for job");
+			Offer offer2 = new Offer("Dave", "Dave@gmail.com", "coding in java");
+			
+			if(offersDao.create(offer1)){
+				System.out.println("Created record");
+			}
+			
+			if(offersDao.create(offer2)){
+				System.out.println("Created record");
+			}
+			
 			List<Offer> offers = offersDao.getOffers();
 			
 			for(Offer offer:offers)

@@ -6,6 +6,26 @@ public class Offer {
 	private String email;
 	private String text;
 
+	public Offer(){
+		
+	}
+	
+	public Offer(int id, String name, String email, String text) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.text = text;
+	}
+	
+	public Offer(String name, String email, String text) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.text = text;
+	}
+
 	@Override
 	public String toString() {
 		return "Offer [id=" + id + ", name=" + name + ", email=" + email + ", text=" + text + "]";
