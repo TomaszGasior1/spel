@@ -20,6 +20,9 @@ public class App {
 			for(Offer offer:offers)
 				System.out.println(offer);
 			
+			Offer offer = offersDao.getOffer(2);
+			System.out.println(offer);
+			
 		} 
 		catch(CannotGetJdbcConnectionException e){
 			
