@@ -14,6 +14,13 @@ public class App {
 		ApplicationContext context = new ClassPathXmlApplicationContext("com/tomaszgasior/spring/spel/beans/beans.xml");
 		
 		OffersDAO offersDao = (OffersDAO)context.getBean("offersDao");
+		
+		Offer updateoffer = new Offer(1,"Clare", "Clare@gmail.com", "Web designer");
+		if(offersDao.update(updateoffer))
+			System.out.println("Object updated");
+		else
+			System.out.println("Cannot update object");
+		
 		try {
 			
 			Offer offer1 = new Offer("Tom", "Tom@gmail.com", "looking for job");

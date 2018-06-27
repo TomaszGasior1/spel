@@ -80,5 +80,11 @@ public class OffersDAO {
 				params.addValue("id", id);
 		return jdbc.update("delete from offers where id = :id", params) == 1;
 	}
+	public boolean update(Offer offer){
+		
+		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
+		
+		return jdbc.update("update offers set name = :name, text = :text, email = :email where id = :id",params) == 1;
+	}
 
 }
